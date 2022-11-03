@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './ExpenseForm.css'
 
-const ExpenseForm = () => {
+const ExpenseForm = (props) => {
     // const [userInput, setUserInput] = useState('');
     const [userInput, setUserInput] = useState({
         enteredTitle: '',
@@ -11,26 +11,22 @@ const ExpenseForm = () => {
 
 
     const titleChangeHandler = (event) => {
-        // setUserInput(
-        //   {
-        //     ...userInput,
-        // enteredTitle: event.target.value}
-        // )
-        // when the state update depends on the previous state:
-        setUserInput((prevState) => {
-            return {
-                ...prevState,
-                enteredTitle: event.target.value
-            }
+        console.log(event)
+    //    setUserInput((prevState) => {
+    //         return {
+    //             ...prevState,
+    //             enteredTitle: event.target.value
+    //         }
+    //     })
+
+        setUserInput({
+            ...userInput,
+            enteredTitle: event.target.value
         })
     }
 
     const amountChangeHandler = (event) => {
-        // setUserInput({
-        //     ...userInput,
-        //     enteredAmount: event.target.value,
-        // })
-        setUserInput((prevState) => {
+       setUserInput((prevState) => {
             return {
                 ...prevState,
                 enteredAmount: event.target.value
@@ -39,23 +35,21 @@ const ExpenseForm = () => {
     }
 
     const dateChangeHandler = (event) => {
-        // setUserInput({
-        //     ...userInput,
-        //     enteredDate: event.target.value
-        // })
-        setUserInput((prevState) => {
+       setUserInput((prevState) => {
             return {
                 ...prevState,
                 enteredDate: event.target.value
             }
         })
     }
-    const submiHandler = (event) => {
+    
+    const submitHandler = (event) => {
         event.preventDefault();
         const expenseDate = {
             ...userInput
         }
-        console.log("expenseDate = ", expenseDate)
+        // console.log("expenseDate = ", expenseDate)
+        props.onSaveExpenseData(expenseDate);
         setUserInput({
             enteredTitle: '',
             enteredDate: '',
@@ -63,7 +57,7 @@ const ExpenseForm = () => {
         });
     }
 
-    return <form onSubmit={submiHandler} >
+    return <form onSubmit={submitHandler} >
         <div className="new-expense__controls">
             <div className="new-expense__control">
                 <label>Title</label>

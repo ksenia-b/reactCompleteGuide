@@ -16,10 +16,6 @@ function ExpenseItem(props) {
         setTitle('updated by Mark')
         // console.log('Clicked!', title);
         title = 'updated'
-
-        
-
-        console.log(title)
     }  
 
     return (<Card className="expense-item">
