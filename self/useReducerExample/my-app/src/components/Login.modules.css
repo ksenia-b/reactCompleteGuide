@@ -1,0 +1,16 @@
+form{
+    width: 50%;
+    margin: 10% auto;
+    background: #00ffff45;
+    padding: 5%;
+}
+
+form input{
+    display: block;
+    width: 80%;
+    float: right;
+}
+
+form button{
+    margin: 5%;
+}
